@@ -109,6 +109,12 @@ class Wp_Subpages {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wp-sub-pages-i18n.php';
 
 		/**
+		 * The class responsible for registering the widget
+		 * of the plugin.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wp-sub-pages-widget.php';
+
+		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wp-sub-pages-admin.php';
