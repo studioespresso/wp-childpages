@@ -27,15 +27,17 @@
 
             $postid = get_the_ID();
             $args = array(
-                'post_parent' => $postid,
+                'parent' => $postid,
                 'post_type'   => 'page',
                 'numberposts' => -1,
                 'post_status' => 'publish'
             );
-            $subpages = get_children( $args );
+            $subpages = get_pages( $args );
 
 
             if( count( $subpages ) != 0 ) {
+
+
 
                 // The widget title
                 $title = apply_filters('widget_title', $instance['title']);
@@ -44,12 +46,20 @@
                 ?>
                 <aside id="wp-sub-pages" class="widget wp-sub-pages">
                     <?php if ( $title ) echo $before_title . $title . $after_title; ?>
+                    <ul>
+	                <?php foreach($subpages as $subpage) { ?>
+	                    <li><a href="<?php echo get_permalink($subpage->ID); ?>">
+			                    <?php echo $subpage->post_title; ?>
+	                        </a>
+	                    </li>
+	                <?php } ?>
+                    </ul>
+
                 </aside>
             <?php
             }
 
         }
-
 
         /**
          * Update the widget
