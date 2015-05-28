@@ -28,8 +28,8 @@
             $postid = get_the_ID();
             $args = array(
                 'parent' => $postid,
+	            'hierarchical' => 1,
                 'post_type'   => 'page',
-                'numberposts' => -1,
                 'post_status' => 'publish'
             );
             $subpages = get_pages( $args );
@@ -38,17 +38,17 @@
             if( count( $subpages ) != 0 ) {
 
 
-
                 // The widget title
                 $title = apply_filters('widget_title', $instance['title']);
                 $before_title = "<h2 class='widget-title'>";
                 $after_title = "</h2>";
+	            $item_class_default = "page_item";
                 ?>
-                <aside id="wp-sub-pages" class="widget wp-sub-pages">
+                <aside id="wp-sub-pages" class="widget wp-sub-pages widget_pages">
                     <?php if ( $title ) echo $before_title . $title . $after_title; ?>
                     <ul>
 	                <?php foreach($subpages as $subpage) { ?>
-	                    <li><a href="<?php echo get_permalink($subpage->ID); ?>">
+	                    <li class="<?php echo (isset($instance['item-class'])) ?  $instance['item-class']:  $item_class_default ?>"><a href="<?php echo get_permalink($subpage->ID); ?>">
 			                    <?php echo $subpage->post_title; ?>
 	                        </a>
 	                    </li>
