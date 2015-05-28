@@ -25,15 +25,29 @@
         {
             extract($args);
 
-            // The widget title
-            $title = apply_filters('widget_title', $instance['title']);
-            $before_title = "<div class='widget-title'>";
-            $after_title = "</div>";
-            ?>
-            <aside id="wp-sub-pages" class="widget wp-sub-pages">
-                <?php if ( $title ) echo $before_title . $title . $after_title; ?>
-            </aside>
+            $postid = get_the_ID();
+            $args = array(
+                'post_parent' => $postid,
+                'post_type'   => 'page',
+                'numberposts' => -1,
+                'post_status' => 'publish'
+            );
+            $subpages = get_children( $args );
+
+
+            if( count( $subpages ) != 0 ) {
+
+                // The widget title
+                $title = apply_filters('widget_title', $instance['title']);
+                $before_title = "<h2 class='widget-title'>";
+                $after_title = "</h2>";
+                ?>
+                <aside id="wp-sub-pages" class="widget wp-sub-pages">
+                    <?php if ( $title ) echo $before_title . $title . $after_title; ?>
+                </aside>
             <?php
+            }
+
         }
 
 
@@ -46,6 +60,8 @@
         function update( $new_instance, $old_instance ) {
             $instance = $old_instance;
             $instance['title'] = strip_tags( $new_instance['title'] );
+            $instance['menu-class'] = strip_tags( $new_instance['menu-class'] );
+            $instance['item-class'] = strip_tags( $new_instance['item-class'] );
             return $instance;
         }
 
@@ -54,13 +70,18 @@
          * @param $instance
          */
         function form($instance) {
-
-            //Set up some default widget settings.
-            $defaults = array( 'title' => __('Our sponsors', 'wp-sponsors'), 'check_images' => 'on' , 'category' => 'All'); ?>
-
+            ?>
             <p>
-                <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title', 'wp-sponsors'); ?></label>
+                <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title', 'wp-sub-pages'); ?></label>
                 <input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:100%;" />
+            </p>
+            <p>
+                <label for="<?php echo $this->get_field_id( 'menu-class' ); ?>"><?php _e('Menu class', 'wp-sub-pages'); ?></label>
+                <input id="<?php echo $this->get_field_id( 'menu-class' ); ?>" name="<?php echo $this->get_field_name( 'menu-class' ); ?>" value="<?php echo $instance['menu-class']; ?>" style="width:100%;" />
+            </p>
+            <p>
+                <label for="<?php echo $this->get_field_id( 'item-class' ); ?>"><?php _e('Item class', 'wp-sub-pages'); ?></label>
+                <input id="<?php echo $this->get_field_id( 'item-class' ); ?>" name="<?php echo $this->get_field_name( 'item-class' ); ?>" value="<?php echo $instance['item-class']; ?>" style="width:100%;" />
             </p>
         <?php }
 
