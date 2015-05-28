@@ -13,7 +13,7 @@
  * @package           Wp_Subpages
  *
  * @wordpress-plugin
- * Plugin Name:       Subpages
+ * Plugin Name:       Sub pages
  * Plugin URI:        onedge.be/plugins/subpages
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
  * Version:           1.0.0
@@ -21,7 +21,7 @@
  * Author URI:        http://onedge.be
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       wp-subpages
+ * Text Domain:       wp-sub-pages
  * Domain Path:       /languages
  */
 
@@ -32,19 +32,19 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * The code that runs during plugin activation.
- * This action is documented in includes/class-wp-subpages-activator.php
+ * This action is documented in includes/class-wp-sub-pages-activator.php
  */
 function activate_wp_subpages() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wp-subpages-activator.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wp-sub-pages-activator.php';
 	Wp_Subpages_Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
- * This action is documented in includes/class-wp-subpages-deactivator.php
+ * This action is documented in includes/class-wp-sub-pages-deactivator.php
  */
 function deactivate_wp_subpages() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wp-subpages-deactivator.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wp-sub-pages-deactivator.php';
 	Wp_Subpages_Deactivator::deactivate();
 }
 
@@ -55,7 +55,7 @@ register_deactivation_hook( __FILE__, 'deactivate_wp_subpages' );
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-wp-subpages.php';
+require plugin_dir_path( __FILE__ ) . 'includes/class-wp-sub-pages.php';
 
 /**
  * Begins execution of the plugin.

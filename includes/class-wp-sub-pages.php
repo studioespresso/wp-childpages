@@ -68,7 +68,7 @@ class Wp_Subpages {
 	 */
 	public function __construct() {
 
-		$this->plugin_name = 'wp-subpages';
+		$this->plugin_name = 'wp-sub-pages';
 		$this->version = '1.0.0';
 
 		$this->load_dependencies();
@@ -100,24 +100,24 @@ class Wp_Subpages {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wp-subpages-loader.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wp-sub-pages-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wp-subpages-i18n.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wp-sub-pages-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wp-subpages-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wp-sub-pages-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wp-subpages-public.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wp-sub-pages-public.php';
 
 		$this->loader = new Wp_Subpages_Loader();
 
