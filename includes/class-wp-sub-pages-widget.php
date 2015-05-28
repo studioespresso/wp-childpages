@@ -42,13 +42,12 @@
                 $title = apply_filters('widget_title', $instance['title']);
                 $before_title = "<h2 class='widget-title'>";
                 $after_title = "</h2>";
-	            $item_class_default = "page_item";
                 ?>
                 <aside id="wp-sub-pages" class="widget wp-sub-pages widget_pages">
                     <?php if ( $title ) echo $before_title . $title . $after_title; ?>
-                    <ul>
+                    <ul class="<?php echo (isset($instance['menu-class'])) ? $instance['menu-class'] : '' ?>">
 	                <?php foreach($subpages as $subpage) { ?>
-	                    <li class="<?php echo (isset($instance['item-class'])) ?  $instance['item-class']:  $item_class_default ?>"><a href="<?php echo get_permalink($subpage->ID); ?>">
+	                    <li class="<?php echo (isset($instance['item-class'])) ? $instance['item-class'] : 'page_item' ?>"><a href="<?php echo get_permalink($subpage->ID); ?>">
 			                    <?php echo $subpage->post_title; ?>
 	                        </a>
 	                    </li>
@@ -72,6 +71,7 @@
             $instance['title'] = strip_tags( $new_instance['title'] );
             $instance['menu-class'] = strip_tags( $new_instance['menu-class'] );
             $instance['item-class'] = strip_tags( $new_instance['item-class'] );
+            $instance['depth'] = strip_tags( $new_instance['depth'] );
             return $instance;
         }
 
@@ -87,11 +87,16 @@
             </p>
             <p>
                 <label for="<?php echo $this->get_field_id( 'menu-class' ); ?>"><?php _e('Menu class', 'wp-sub-pages'); ?></label>
-                <input id="<?php echo $this->get_field_id( 'menu-class' ); ?>" name="<?php echo $this->get_field_name( 'menu-class' ); ?>" value="<?php echo $instance['menu-class']; ?>" style="width:100%;" />
+                <input id="<?php echo $this->get_field_id( 'menu-class' ); ?>" name="<?php echo $this->get_field_name( 'menu-class' ); ?>" value="<?php echo $instance['menu-class']; ?>" style="width:50%;" />
             </p>
             <p>
                 <label for="<?php echo $this->get_field_id( 'item-class' ); ?>"><?php _e('Item class', 'wp-sub-pages'); ?></label>
-                <input id="<?php echo $this->get_field_id( 'item-class' ); ?>" name="<?php echo $this->get_field_name( 'item-class' ); ?>" value="<?php echo $instance['item-class']; ?>" style="width:100%;" />
+                <input id="<?php echo $this->get_field_id( 'item-class' ); ?>" name="<?php echo $this->get_field_name( 'item-class' ); ?>" value="<?php echo $instance['item-class']; ?>" style="width:50%;" />
+            </p>
+	        <p>
+                <label for="<?php echo $this->get_field_id( 'depth' ); ?>"><?php _e('Depth', 'wp-sub-pages'); ?></label>
+                <input id="<?php echo $this->get_field_id( 'depth' ); ?>" name="<?php echo $this->get_field_name( 'depth' ); ?>" value="<?php echo $instance['depth']; ?>" style="width:100%;" type="number" max="10" min="-1" />
+		        <em><?php _e('Set to -1 to show all subpages', 'wp-sub-pages'); ?></em>
             </p>
         <?php }
 
