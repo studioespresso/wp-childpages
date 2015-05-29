@@ -17,7 +17,7 @@ You can also add css class to both the `<ul>` and the `<li>` tags, to match the 
 
 == Installation ==
 
-1. Upload the `wp-sub-pages` folder to the `/wp-content/plugins/` directory
+1. Upload the `wp-childpages` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Add the widget to a widget area or sidebar
 
