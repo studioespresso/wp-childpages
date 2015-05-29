@@ -10,8 +10,8 @@
         function __construct() {
             parent::__construct(
                 'subpages_widget', // Base ID
-                __( 'Subpages', 'text_domain' ), // Name
-                array( 'description' => __( 'A Foo Widget', 'text_domain' ), ) // Args
+                __( 'Child pages', 'wp-childpages' ), // Name
+                array( 'description' => __( 'Lists the child pages of the current page', 'wp-childpages' ), ) // Args
             );
         }
 
@@ -71,7 +71,7 @@
             $instance['title'] = strip_tags( $new_instance['title'] );
             $instance['menu-class'] = strip_tags( $new_instance['menu-class'] );
             $instance['item-class'] = strip_tags( $new_instance['item-class'] );
-            $instance['depth'] = strip_tags( $new_instance['depth'] );
+            // $instance['depth'] = strip_tags( $new_instance['depth'] );
             return $instance;
         }
 
@@ -93,11 +93,11 @@
                 <label for="<?php echo $this->get_field_id( 'item-class' ); ?>"><?php _e('Item class', 'wp-childpages'); ?></label>
                 <input id="<?php echo $this->get_field_id( 'item-class' ); ?>" name="<?php echo $this->get_field_name( 'item-class' ); ?>" value="<?php echo $instance['item-class']; ?>" style="width:50%;" />
             </p>
-	        <p>
+<!-- 	        <p>
                 <label for="<?php echo $this->get_field_id( 'depth' ); ?>"><?php _e('Depth', 'wp-childpages'); ?></label>
                 <input id="<?php echo $this->get_field_id( 'depth' ); ?>" name="<?php echo $this->get_field_name( 'depth' ); ?>" value="<?php echo $instance['depth']; ?>" style="width:100%;" type="number" max="10" min="-1" />
 		        <em><?php _e('Set to -1 to show all subpages', 'wp-childpages'); ?></em>
-            </p>
+            </p> -->
         <?php }
 
     }
