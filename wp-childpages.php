@@ -13,9 +13,9 @@
  * @package           Wp_Subpages
  *
  * @wordpress-plugin
- * Plugin Name:       Sub pages
- * Plugin URI:        onedge.be/plugins/subpages
- * Description:       Displays the childpages of the page you're currently on
+ * Plugin Name:       Childpages
+ * Plugin URI:        onedge.be/plugins/wp-childpages
+ * Description:       Displays the childpages of the page you're currently on.
  * Version:           1.0.0
  * Author:            Jan Henckens
  * Author URI:        http://onedge.be
