@@ -13,7 +13,7 @@
  * @package           Wp_Subpages
  *
  * @wordpress-plugin
- * Plugin Name:       Childpages
+ * Plugin Name:       Child pages
  * Plugin URI:        onedge.be/plugins/wp-childpages
  * Description:       Displays the childpages of the page you're currently on.
  * Version:           1.0.0
