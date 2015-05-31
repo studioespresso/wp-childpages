@@ -51,7 +51,7 @@
             $subpages = wp_list_pages( $args );
 
 
-            if( count( $subpages ) != 0 ) {
+            if( !empty( $subpages )  ) {
 
 
                 // The widget title
