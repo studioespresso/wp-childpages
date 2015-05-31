@@ -36,7 +36,7 @@ You can also add css class to the `<ul>` tag, to match the widget's styling with
 
 = 1.0.1 =
 * Added "depth" option
-* Removed option to add a CSS class on each page item (each <li>)
+* Removed option to add a CSS class on each page item (each list item)
 
 = 1.0 =
 * Initial release
