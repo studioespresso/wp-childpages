@@ -25,17 +25,33 @@
         {
             extract($args);
 
+
+
+
             $postid = get_the_ID();
             $args = array(
-                'parent' => $postid,
-	            'hierarchical' => 1,
-                'post_type'   => 'page',
-                'post_status' => 'publish'
+                'child_of'      => $postid,
+                'authors'       => '',
+                'date_format'   => get_option('date_format'),
+                'depth'         => $instance['depth'],
+                'echo'          => 0,
+                'exclude'       => '',
+                'include'       => '',
+                'link_after'    => '',
+                'link_before'   => '',
+                'post_type'     => 'page',
+                'post_status'   => 'publish',
+                'show_date'     => '',
+                'sort_column'   => 'menu_order',
+                'sort_order'    => '',
+                'title_li'      => __(''),
+	            'link_before'   => '',
+	            'link_after'    => ''
             );
-            $subpages = get_pages( $args );
+            $subpages = wp_list_pages( $args );
 
 
-            if( count( $subpages ) != 0 ) {
+            if( !empty( $subpages )  ) {
 
 
                 // The widget title
@@ -46,14 +62,8 @@
                 <aside id="wp-childpages" class="widget wp-childpages widget_pages">
                     <?php if ( $title ) echo $before_title . $title . $after_title; ?>
                     <ul class="<?php echo (isset($instance['menu-class'])) ? $instance['menu-class'] : '' ?>">
-	                <?php foreach($subpages as $subpage) { ?>
-	                    <li class="<?php echo (isset($instance['item-class'])) ? $instance['item-class'] : 'page_item' ?>"><a href="<?php echo get_permalink($subpage->ID); ?>">
-			                    <?php echo $subpage->post_title; ?>
-	                        </a>
-	                    </li>
-	                <?php } ?>
+	                <?php echo $subpages; ?>
                     </ul>
-
                 </aside>
             <?php
             }
@@ -70,8 +80,7 @@
             $instance = $old_instance;
             $instance['title'] = strip_tags( $new_instance['title'] );
             $instance['menu-class'] = strip_tags( $new_instance['menu-class'] );
-            $instance['item-class'] = strip_tags( $new_instance['item-class'] );
-            // $instance['depth'] = strip_tags( $new_instance['depth'] );
+            $instance['depth'] = strip_tags( $new_instance['depth'] );
             return $instance;
         }
 
@@ -89,15 +98,11 @@
                 <label for="<?php echo $this->get_field_id( 'menu-class' ); ?>"><?php _e('Menu class', 'wp-childpages'); ?></label>
                 <input id="<?php echo $this->get_field_id( 'menu-class' ); ?>" name="<?php echo $this->get_field_name( 'menu-class' ); ?>" value="<?php echo $instance['menu-class']; ?>" style="width:50%;" />
             </p>
-            <p>
-                <label for="<?php echo $this->get_field_id( 'item-class' ); ?>"><?php _e('Item class', 'wp-childpages'); ?></label>
-                <input id="<?php echo $this->get_field_id( 'item-class' ); ?>" name="<?php echo $this->get_field_name( 'item-class' ); ?>" value="<?php echo $instance['item-class']; ?>" style="width:50%;" />
-            </p>
-<!-- 	        <p>
+	        <p>
                 <label for="<?php echo $this->get_field_id( 'depth' ); ?>"><?php _e('Depth', 'wp-childpages'); ?></label>
-                <input id="<?php echo $this->get_field_id( 'depth' ); ?>" name="<?php echo $this->get_field_name( 'depth' ); ?>" value="<?php echo $instance['depth']; ?>" style="width:100%;" type="number" max="10" min="-1" />
-		        <em><?php _e('Set to -1 to show all subpages', 'wp-childpages'); ?></em>
-            </p> -->
+                <input id="<?php echo $this->get_field_id( 'depth' ); ?>" name="<?php echo $this->get_field_name( 'depth' ); ?>" value="<?php echo $instance['depth']; ?>" style="width:100%;" type="number" max="10" min="0" />
+		        <em><?php _e('Set to 0 to show all subpages', 'wp-childpages'); ?></em>
+            </p>
         <?php }
 
     }
