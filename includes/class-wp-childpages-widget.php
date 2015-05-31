@@ -80,7 +80,6 @@
             $instance = $old_instance;
             $instance['title'] = strip_tags( $new_instance['title'] );
             $instance['menu-class'] = strip_tags( $new_instance['menu-class'] );
-            $instance['item-class'] = strip_tags( $new_instance['item-class'] );
             $instance['depth'] = strip_tags( $new_instance['depth'] );
             return $instance;
         }
@@ -98,10 +97,6 @@
             <p>
                 <label for="<?php echo $this->get_field_id( 'menu-class' ); ?>"><?php _e('Menu class', 'wp-childpages'); ?></label>
                 <input id="<?php echo $this->get_field_id( 'menu-class' ); ?>" name="<?php echo $this->get_field_name( 'menu-class' ); ?>" value="<?php echo $instance['menu-class']; ?>" style="width:50%;" />
-            </p>
-            <p>
-                <label for="<?php echo $this->get_field_id( 'item-class' ); ?>"><?php _e('Item class', 'wp-childpages'); ?></label>
-                <input id="<?php echo $this->get_field_id( 'item-class' ); ?>" name="<?php echo $this->get_field_name( 'item-class' ); ?>" value="<?php echo $instance['item-class']; ?>" style="width:50%;" />
             </p>
 	        <p>
                 <label for="<?php echo $this->get_field_id( 'depth' ); ?>"><?php _e('Depth', 'wp-childpages'); ?></label>
