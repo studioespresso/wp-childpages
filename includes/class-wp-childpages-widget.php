@@ -23,14 +23,18 @@
          */
         function widget($args, $instance)
         {
-            extract($args);
-
-
-
 
             $postid = get_the_ID();
+            $page = get_post_ancestors( $postid );
+
+            if( count($page) != '0') {
+                $parent = end($page);
+            } else {
+                $parent = $postid;
+            }
+
             $args = array(
-                'child_of'      => $postid,
+                'child_of'      => $parent,
                 'authors'       => '',
                 'date_format'   => get_option('date_format'),
                 'depth'         => $instance['depth'],
