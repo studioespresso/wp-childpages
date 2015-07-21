@@ -16,7 +16,7 @@
  * Plugin Name:       Child pages
  * Plugin URI:        onedge.be/plugins/wp-childpages
  * Description:       Displays the childpages of the page you're currently on.
- * Version:           1.0.1
+ * Version:           1.1
  * Author:            Jan Henckens
  * Author URI:        http://onedge.be
  * License:           GPL-2.0+

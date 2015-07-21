@@ -4,7 +4,7 @@ Donate link: http://onedge.be/donate
 Tags: pages, widget, sub pages, child pages
 Requires at least: 3.0.1
 Tested up to: 4.2.2
-Stable tag: 1.0.1
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,6 +33,9 @@ You can also add css class to the `<ul>` tag, to match the widget's styling with
 
 
 == Changelog ==
+
+= 1.1 =
+* This update slightly changes the behaviour of the widget: no matter on which childpage you are, you'll always see the childpages starting from the parent. Use the depth option to limit how deep you want to show the childpages
 
 = 1.0.1 =
 * Added "depth" option
